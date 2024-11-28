@@ -64,5 +64,3 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
 };
 
 export default StartupCard;
-
-// Start from: https://youtu.be/Zq5fmkH0T78?si=y9mJGBDA-httw2FY&t=9905
