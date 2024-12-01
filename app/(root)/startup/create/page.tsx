@@ -14,3 +14,5 @@ export default async function CreateStartupPage() {
     </>
   );
 }
+
+// https://youtu.be/Zq5fmkH0T78?si=v2dUT-ZPshLg2JF-&t=15774

@@ -10,6 +10,7 @@ import { formSchema } from '@/lib/validation';
 import { z } from 'zod';
 import { useToast } from '@/hooks/use-toast';
 import { redirect, useRouter } from 'next/navigation';
+import { createPitch } from '@/lib/action';
 
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -27,17 +28,15 @@ const StartupForm = () => {
         pitch,
       };
       await formSchema.parseAsync(formValues);
-      console.log(formValues);
-      // const result = await createIdea(prevState, formData, pitch);
-      // console.log(result);
-      // if (result.status = 'SUCCESS') {
-      //   toast({
-      //     title: 'Success',
-      //     description: 'Your startup pitch has been created successfully',
-      //   });
-      //   router.push(`/startup/${result.id}`);
-      // }
-      // return result;
+      const result = await createPitch(prevState, formData, pitch);
+      if (result.status = 'SUCCESS') {
+        toast({
+          title: 'Success',
+          description: 'Your startup pitch has been created successfully',
+        });
+        router.push(`/startup/${(result as any as { _id: string })._id}`);
+      }
+      return result;
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors = error.flatten().fieldErrors;
@@ -93,8 +92,8 @@ const StartupForm = () => {
           placeholder="Startup Description"
           required
         />
-        {errors.descritpion && (
-          <p className="startup-form_error">{errors.descritpion}</p>
+        {errors.description && (
+          <p className="startup-form_error">{errors.description}</p>
         )}
       </div>
 
