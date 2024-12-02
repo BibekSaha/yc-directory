@@ -50,4 +50,4 @@ export const startup = defineType({
       title: 'title'
     }
   }
-})
+});

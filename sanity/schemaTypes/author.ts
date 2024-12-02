@@ -37,4 +37,4 @@ export const author = defineType({
       title: 'name'
     }
   }
-})
+});
