@@ -9,7 +9,7 @@ import { Send } from 'lucide-react';
 import { formSchema } from '@/lib/validation';
 import { z } from 'zod';
 import { useToast } from '@/hooks/use-toast';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { createPitch } from '@/lib/action';
 
 const StartupForm = () => {
